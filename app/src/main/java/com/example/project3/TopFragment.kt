@@ -24,7 +24,6 @@ class TopFragment : Fragment() {
     private lateinit var spinnerOptionSelectedListener: OnSpinnerOptionSelectedListener
 
     interface OnSpinnerOptionSelectedListener {
-        //fun onSpinnerItemSelected(data : Breed)
         fun onSpinnerItemSelected(data : Breed)
     }
 
@@ -59,18 +58,15 @@ class TopFragment : Fragment() {
 
         // Observe the breedsList LiveData
         viewModel.breedsList.observe(viewLifecycleOwner, Observer { breeds ->
-            // Extract the breed names from the breeds list
+            // Extract the breeds from the breeds list
             val breedNames = breeds.map { it.name }
-            // Update the Spinner adapter with the breed names
             val spinnerAdapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_dropdown_item, breedNames)
             binding.breedsSpinner.adapter = spinnerAdapter
         })
 
         binding.breedsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                // Now, instead of just the name, you have access to the whole breed object
                 val selectedBreed = viewModel.breedsList.value?.get(position)
-                // Assuming you want to pass the breed's name to the spinnerOptionSelectedListener
                 selectedBreed?.let {
                     spinnerOptionSelectedListener.onSpinnerItemSelected(it)
                 }

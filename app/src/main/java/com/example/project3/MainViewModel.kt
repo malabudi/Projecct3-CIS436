@@ -17,7 +17,6 @@ data class Breed(
     val name: String,
     val temperament: String,
     val origin: String
-    // Consider adding more fields as necessary
 )
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -33,7 +32,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         // Get a RequestQueue
         val queue = Volley.newRequestQueue(getApplication<Application>().applicationContext)
 
-        // Request a string response from the provided URL
         val stringRequest = StringRequest(Request.Method.GET, catUrl,
             { response ->
                 try {
@@ -54,13 +52,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     _breedsList.postValue(breeds)
                 } catch (e: JSONException) {
                     e.printStackTrace()
-                    // Handle error - perhaps update LiveData with an error state
                 }
             },
             {
-                // Handle error
                 Log.e("MainViewModel", "Failed to fetch breeds")
-                // Perhaps update LiveData with an error state
             })
 
         // Add the request to the RequestQueue
