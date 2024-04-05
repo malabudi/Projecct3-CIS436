@@ -22,7 +22,17 @@ class BottomFragment : Fragment() {
         return binding.root
     }
 
-    fun updateTextView(data: String) {
-        binding.breedNameTextView.text = data
+    fun updateCatName(name: String) {
+        binding.breedNameTextView.text = name
+    }
+
+    fun updateCatTemperament(temperament: String) {
+        binding.breedTemperamentTextView.text = temperament
+
+    }
+
+    fun updateCatOrigin(origin: String) {
+        binding.breedOriginTextView.text = origin
+
     }
 }
