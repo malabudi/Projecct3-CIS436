@@ -11,8 +11,7 @@ import com.example.project3.databinding.ActivityMainBinding
 import org.json.JSONArray
 import org.json.JSONObject
 
-class MainActivity : AppCompatActivity() , TopFragment.OnSpinnerOptionSelectedListener{
-
+class MainActivity : AppCompatActivity() , TopFragment.OnSpinnerOptionSelectedListener {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +29,9 @@ class MainActivity : AppCompatActivity() , TopFragment.OnSpinnerOptionSelectedLi
         bottomFragment.updateCatTemperament(data.temperament)
         bottomFragment.updateCatOrigin(data.origin)
 
+        if (data.image != null) {
+            bottomFragment.updateImage(data.image.width, data.image.height, data.image.url)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

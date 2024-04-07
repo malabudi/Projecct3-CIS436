@@ -12,11 +12,18 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 import org.json.JSONException
 
+data class CatImg(
+    val width: Int,
+    val height: Int,
+    val url: String
+)
+
 data class Breed(
     val id: String,
     val name: String,
     val temperament: String,
-    val origin: String
+    val origin: String,
+    val image: CatImg
 )
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -27,7 +34,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun fetchBreeds() {
-        var catUrl = "https://api.thecatapi.com/v1/breeds" +
+        val catUrl = "https://api.thecatapi.com/v1/breeds" +
                 "?api_key=live_Z0JoMXajSmpJIXKFp3yFqKfuq9Z3Xk06C7TVpOmHONmOoHG7pNmtotGV7I7VabN7"
         // Get a RequestQueue
         val queue = Volley.newRequestQueue(getApplication<Application>().applicationContext)
@@ -40,12 +47,25 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     val breeds = mutableListOf<Breed>()
                     for (i in 0 until jsonArray.length()) {
                         val jsonObject = jsonArray.getJSONObject(i)
+                        Log.d("tag", jsonObject.toString())
                         val breed = Breed(
                             id = jsonObject.getString("id"),
                             name = jsonObject.getString("name"),
                             temperament = jsonObject.getString("temperament"),
-                            origin = jsonObject.getString("origin")
+                            origin = jsonObject.getString("origin"),
+                            image = if (!jsonObject.isNull("image")) {
+                                val imageObject = jsonObject.getJSONObject("image")
+                                CatImg(
+                                    width = imageObject.optInt("width", 0), // Default value of 0 if width is not present
+                                    height = imageObject.optInt("height", 0), // Default value of 0 if height is not present
+                                    url = imageObject.optString("url", "") // Default value of empty string if url is not present
+                                )
+                            } else {
+                                // If "image" is null in the JSON, set image to a default CatImg with default values
+                                CatImg(width = 0, height = 0, url = "")
+                            }
                         )
+
                         breeds.add(breed)
                     }
                     // Update the LiveData with the fetched breeds

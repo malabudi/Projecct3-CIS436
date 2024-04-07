@@ -7,41 +7,87 @@
     android:layout_height="match_parent"
     tools:context=".BottomFragment">
 
-    <TextView
-        android:id="@+id/breedNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Breed Name"
-        android:textSize="34sp"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.476">
 
-    <TextView
-        android:id="@+id/breedOriginTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Breed Origin"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/breedNameTextView" />
+        <TextView
+            android:id="@+id/breedNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/breed_name"
+            android:textAlignment="center"
+            android:textSize="34sp" />
+    </ScrollView>
 
-    <TextView
-        android:id="@+id/breedTemperamentTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="45dp"
-        android:text="Breed Temperament"
-        android:textAlignment="center"
-        android:textSize="34sp"
+    <ScrollView
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"
+        app:layout_constraintVertical_bias="0.476">
+
+        <TextView
+            android:id="@+id/breedTemperamentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:text="@string/breed_temperament"
+            android:textAlignment="center"
+            android:textSize="34sp" />
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/breedOriginTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/breedOriginTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/breed_origin"
+            android:textAlignment="center"
+            android:textSize="34sp" />
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollViewImg"
+        android:layout_width="413dp"
+        android:layout_height="186dp"
+        android:contentDescription="@string/image_of_cat_breeds"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.031">
+
+        <ImageView
+            android:id="@+id/catIV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image_of_cat"
+            tools:src="@tools:sample/avatars" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

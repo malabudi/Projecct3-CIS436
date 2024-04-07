@@ -11,18 +11,19 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/topFragment"
         android:name="com.example.project3.TopFragment"
-        android:layout_width="393dp"
-        android:layout_height="232dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="403dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/bottomFragment"
         android:name="com.example.project3.BottomFragment"
-        android:layout_width="379dp"
-        android:layout_height="465dp"
+        android:layout_width="384dp"
+        android:layout_height="580dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
